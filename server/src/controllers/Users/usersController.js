@@ -1,10 +1,8 @@
-const User = require("../../models/User");
-
-
+import {User} from "../../models/User.js";
 
 
 //Register
-const registerUser = async (req,res)=>{
+export const registerUser = async (req,res)=>{
     const {email, firstname, lastname, password} = req?.body;
     try{
         //check if user exists
@@ -20,7 +18,4 @@ const registerUser = async (req,res)=>{
 };
 
 
-
-module.exports = {
-    registerUser
-}
+export default registerUser;

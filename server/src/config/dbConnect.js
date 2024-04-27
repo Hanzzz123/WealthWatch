@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const dbConnect = async () =>{
+export const dbConnect = async () =>{
     try{
         await mongoose.connect("mongodb://localhost:27017/", {
         });
@@ -10,4 +10,4 @@ const dbConnect = async () =>{
     }
 };
 
-module.exports = dbConnect;
+export default dbConnect();

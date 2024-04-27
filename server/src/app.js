@@ -1,7 +1,7 @@
-const express = require("express");
-const dbConnect = require("./config/dbConnect");
-const userRoute = require("./routes/users/usersRoute");
-const app = express();
+import express from "express";
+import {dbConnect} from "./config/dbConnect.js";
+import userRoute from "./routes/users/usersRoute.js";
+export const app = express();
 
 
 //db connect
@@ -16,4 +16,4 @@ app.use('/', userRoute)
 
 //expenses
 
-module.exports = app;
+export default app
