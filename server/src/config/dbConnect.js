@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const dbConnect = async () =>{
     try{
-        await mongoose.connect("mongodb://localhost:27017/", {
+        await mongoose.connect("mongodb://localhost/WealthWatch", {
         });
         console.log(`DB Connected succesfully`)
     }catch (error){
