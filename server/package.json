@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/Hanzzz123/WealthWatch#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2"
   },
   "devDependencies": {
