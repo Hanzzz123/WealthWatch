@@ -3,6 +3,7 @@ import {dbConnect} from "./config/dbConnect.js";
 import userRoute from "./routes/users/usersRoute.js";
 import {errorHandler,notFound} from "./middlewares/errorMiddleware.js";
 import dotenv from "dotenv"
+import {incomeRoute} from "./routes/income/incomeRoute.js";
 
 
 export const app = express();
@@ -18,6 +19,7 @@ app.use(express.json())
 
 //routes
 app.use('/api/users', userRoute)
+app.use('/api/income',incomeRoute)
 
 //error
 app.use(notFound);
