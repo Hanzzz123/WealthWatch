@@ -38,4 +38,35 @@ export const fetchIncomeDetailController = expressAsyncHandler(async (req, res) 
     }
 })
 
-export default {createIncomeController,fetchAllIncomeController,fetchIncomeDetailController}
+export const updateIncomeController = expressAsyncHandler(async (req, res)=>{
+    const {id} = req?.params;
+    const {title, amount, description} = req.body;
+    try {
+        const income = await Income.findByIdAndUpdate(id,{
+            title, description, amount,
+        },{new: true}
+        );
+        res.json(income);
+    }catch (error){
+
+    }
+})
+
+//delete income
+export const deleteIncomeController = expressAsyncHandler(async (req, res) => {
+    const {id} = req?.params
+    try {
+        const income = await Income.findByIdAndDelete(id)
+        res.json(income);
+    } catch (error){
+        res.json(error);
+    }
+})
+
+export default {
+    createIncomeController,
+    fetchAllIncomeController,
+    fetchIncomeDetailController,
+    updateIncomeController,
+    deleteIncomeController
+}
