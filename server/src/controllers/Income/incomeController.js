@@ -27,4 +27,15 @@ export const fetchAllIncomeController = expressAsyncHandler(async (req, res) => 
     }
 })
 
-export default {createIncomeController,fetchAllIncomeController}
+//fetch single income
+export const fetchIncomeDetailController = expressAsyncHandler(async (req, res) => {
+    const {id} = req?.params
+    try {
+        const income = await Income.findById(id)
+        res.json(income);
+    } catch (error){
+        res.json(error);
+    }
+})
+
+export default {createIncomeController,fetchAllIncomeController,fetchIncomeDetailController}
