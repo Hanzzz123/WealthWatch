@@ -6,13 +6,14 @@ import {
     updateIncomeController,
     deleteIncomeController
 } from "../../controllers/Income/incomeController.js";
+import authMiddleware from "../../middlewares/authMiddleware.js";
 
 export const incomeRoute = express.Router();
 
-incomeRoute.post('/',createIncomeController )
-incomeRoute.get('/',fetchAllIncomeController)
-incomeRoute.get('/:id',fetchIncomeDetailController)
-incomeRoute.put('/:id',updateIncomeController)
-incomeRoute.delete("/:id",deleteIncomeController)
+incomeRoute.post('/',authMiddleware,createIncomeController )
+incomeRoute.get('/', authMiddleware, fetchAllIncomeController)
+incomeRoute.get('/:id',authMiddleware,fetchIncomeDetailController)
+incomeRoute.put('/:id',authMiddleware,updateIncomeController)
+incomeRoute.delete("/:id",authMiddleware,deleteIncomeController)
 
 export default {incomeRoute}

@@ -6,13 +6,14 @@ import {
     updateExpenseController,
     deleteExpenseController,
 } from "../../controllers/Expenses/expenseController.js";
+import authMiddleware from "../../middlewares/authMiddleware.js";
 
 export const expenseRoute = express.Router();
 
-expenseRoute.post('/',createExpenseController)
-expenseRoute.get('/',fetchAllExpenseController)
-expenseRoute.get('/:id',fetchExpenseDetailController)
-expenseRoute.put('/:id',updateExpenseController)
-expenseRoute.delete("/:id",deleteExpenseController)
+expenseRoute.post('/',authMiddleware,createExpenseController)
+expenseRoute.get('/',authMiddleware,fetchAllExpenseController)
+expenseRoute.get('/:id',authMiddleware,fetchExpenseDetailController)
+expenseRoute.put('/:id',authMiddleware,updateExpenseController)
+expenseRoute.delete("/:id",authMiddleware,deleteExpenseController)
 
 export default {expenseRoute}
