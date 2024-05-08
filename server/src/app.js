@@ -5,6 +5,7 @@ import {errorHandler,notFound} from "./middlewares/errorMiddleware.js";
 import dotenv from "dotenv"
 import {incomeRoute} from "./routes/income/incomeRoute.js";
 import {expenseRoute} from "./routes/expenses/expenseRoute.js";
+import authMiddleware from "./middlewares/authMiddleware.js";
 
 
 export const app = express();
@@ -26,6 +27,7 @@ app.use('/api/expense',expenseRoute)
 //error
 app.use(notFound);
 app.use(errorHandler);
+app.use(authMiddleware)
 
 //income
 
