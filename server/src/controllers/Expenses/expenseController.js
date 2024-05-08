@@ -17,17 +17,19 @@ export const createExpenseController = expressAsyncHandler(async (req, res) => {
     }
 })
 
-//fetch all income
+//fetch all expense
 export const fetchAllExpenseController = expressAsyncHandler(async (req, res) => {
+    const {page} = req?.query
     try {
-        const expense = await Expense.find()
+        const expense = await Expense.paginate(
+            {},{limit:10, page:Number(page)})
         res.json(expense);
     } catch (error){
         res.json(error);
     }
 })
 
-//fetch single income
+//fetch single expense
 export const fetchExpenseDetailController = expressAsyncHandler(async (req, res) => {
     const {id} = req?.params
     try {
@@ -51,7 +53,7 @@ export const updateExpenseController = expressAsyncHandler(async (req, res)=>{
     }
 })
 
-//delete income
+//delete expense
 export const deleteExpenseController = expressAsyncHandler(async (req, res) => {
     const {id} = req?.params
     try {
