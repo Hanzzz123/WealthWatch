@@ -19,7 +19,7 @@ export const createIncomeController = expressAsyncHandler(async (req, res) => {
 
 //fetch all income
 export const fetchAllIncomeController = expressAsyncHandler(async (req, res) => {
-    const {} = req.query;
+    const {page} = req.query;
     try {
         const income = await Income.paginate({},{limit:10, page:Number(page)});
         res.json(income);
