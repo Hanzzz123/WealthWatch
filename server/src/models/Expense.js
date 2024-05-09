@@ -27,7 +27,13 @@ export const expenseSchema = new Schema({
         }
     },
     {
-        timestamp: true
+        timestamp: true,
+        toJSON: {
+            virtuals: true,
+        },
+        toObject:{
+            virtuals: true
+        }
     });
 
 expenseSchema.plugin(mongoosePaginate)

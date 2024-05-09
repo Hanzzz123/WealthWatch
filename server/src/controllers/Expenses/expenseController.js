@@ -1,5 +1,5 @@
 import expressAsyncHandler from "express-async-handler";
-import {Expense} from "../../models/Expense.js";
+import  {Expense} from "../../models/Expense.js";
 
 //create
 export const createExpenseController = expressAsyncHandler(async (req, res) => {
@@ -22,12 +22,13 @@ export const fetchAllExpenseController = expressAsyncHandler(async (req, res) =>
     const {page} = req?.query
     try {
         const expense = await Expense.paginate(
-            {},{limit:10, page:Number(page)})
+            {},{limit:10, page:Number(page),populate:"user"})
         res.json(expense);
     } catch (error){
         res.json(error);
     }
 })
+
 
 //fetch single expense
 export const fetchExpenseDetailController = expressAsyncHandler(async (req, res) => {
